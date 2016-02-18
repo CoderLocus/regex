@@ -1,0 +1,49 @@
++ (BOOL)isInteger:(NSString *)string {
+    NSString *regex = @"(^[0-9]+$)";
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    return [pred evaluateWithObject:string];
+}
+
++ (BOOL)isNotInteger:(NSString *)string {
+    return ![JLSValidateUtil isInteger:string];
+}
+
++ (BOOL)isPassword:(NSString *)string {
+    NSString *regex = @"(^(?![0-9]+$)(?![a-zA-Z]+$)[a-zA-Z0-9]{6,25}$)";
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    return [pred evaluateWithObject:string];
+}
+
++ (BOOL)isNotPassword:(NSString *)string {
+    return ![JLSValidateUtil isPassword:string];
+}
+
++ (BOOL)isDecimal:(NSString *)string {
+    NSString *regex = @"(^[0-9.]+$)";
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    return [pred evaluateWithObject:string];
+}
+
++ (BOOL)isNotDecimal:(NSString *)string {
+    return ![JLSValidateUtil isDecimal:string];
+}
+
++ (BOOL)isMobile:(NSString *)string {
+    NSString *regex = @"^1[0-9]{10}";
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    return [pred evaluateWithObject:string];
+}
+
++ (BOOL)isNotMobile:(NSString *)string {
+    return ![JLSValidateUtil isMobile:string];
+}
+
++ (BOOL)isIdCard:(NSString *)string {
+    NSString *regex = @"^(\\d{14}|\\d{17})([0-9xX])$";
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    return [pred evaluateWithObject:string];
+}
+
++ (BOOL)isNotIdCard:(NSString *)string {
+    return ![self isIdCard:string];
+}
